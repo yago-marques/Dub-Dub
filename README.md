@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/84297648/194336462-4d0a5153-b17f-4c3f-
 ## 👩🏾‍💻 Technologies
 - [x] UIKit
 - [x] ViewCode, auto layout
-- [x] VIP Architecture
+- [x] VIP Clean Architecture
 - [x] swiftlint
 - [x] API REST
 - [x] Core Data
