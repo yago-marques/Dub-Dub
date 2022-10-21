@@ -17,8 +17,10 @@ final class CharacterImageSpace: UIView {
                     self.statusImage.image = UIImage(named: self.character?.status ?? "unknown")
                     self.genreImage.image = UIImage(named: self.character?.gender ?? "unknown")
 
-                    if let image = self.character?.image {
+                    if let image = self.character?.imageUrl {
                         self.characterImage.downloaded(from: URL(string: image)!)
+                    } else if let imageData = self.character?.image {
+                        self.characterImage.image = UIImage(data: imageData)
                     }
                 }
             }

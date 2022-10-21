@@ -9,9 +9,11 @@ import Foundation
 
 enum APIConstants: String {
     case baseUrl = "https://rickandmortyapi.com/api"
+    case imageBaseUrl = "https://rickandmortyapi.com/api/character/avatar"
 
     enum Numbers: Int {
         case pageUrlCountWithoutPageNumber = 47
+        case pathImageWithoutBaseUrl = 48
     }
 
     enum Paths: String {

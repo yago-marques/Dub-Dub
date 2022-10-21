@@ -81,21 +81,25 @@ private extension CharacterNetworkingWorker {
         )
 
         charactersResponse.results.forEach { result in
-            let character = Character(
-                id: result.id,
-                name: result.name,
-                status: result.status,
-                species: result.species,
-                gender: result.gender,
-                image: result.image,
-                location: result.location.name
-            )
+            self.fetchImage(with: result.image) { imageResult in
+                if let imageResult {
+                    let character = Character(
+                        name: result.name,
+                        status: result.status,
+                        species: result.species,
+                        gender: result.gender,
+                        image: imageResult,
+                        imageUrl: result.image,
+                        location: result.location.name
+                    )
 
-            characterGroup.data.append(character)
-        }
+                    characterGroup.data.append(character)
+                }
 
-        if characterGroup.data.count == charactersResponse.results.count {
-            completion(characterGroup)
+                if characterGroup.data.count == charactersResponse.results.count {
+                    completion(characterGroup)
+                }
+            }
         }
     }
 
@@ -105,6 +109,15 @@ private extension CharacterNetworkingWorker {
             return page
         } else {
             return nil
+        }
+    }
+
+    private func fetchImage(with imagePath: String, completion: @escaping (Data?) -> Void) {
+        let endpoint = CharacterImageEndpoint(path: imagePath[APIConstants.Numbers.pathImageWithoutBaseUrl.rawValue...])
+        api.get(endpoint: endpoint) { result in
+            if case let .success((data, _)) = result {
+                completion(data)
+            }
         }
     }
 }

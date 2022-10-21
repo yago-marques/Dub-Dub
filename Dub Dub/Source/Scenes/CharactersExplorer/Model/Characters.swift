@@ -15,11 +15,11 @@ struct Characters {
 }
 
 struct Character {
-    let id: Int
     let name: String
     let status: String
     let species: String
     let gender: String
-    let image: String
+    let image: Data
+    let imageUrl: String?
     let location: String
 }

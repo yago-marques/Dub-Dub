@@ -20,17 +20,20 @@ protocol CharactersExplorerInteractorDelegate: AnyObject {
 
 final class CharactersExplorerInteractor: CharactersExplorerInteracting {
     private let networkingWorker: CharacterNetworkWorking
+    private let coreDataWorker: CharacterCoreDataWorking
     private var presenter: CharacterExplorerPresenting
     weak var controllerDelegate: CharactersExplorerControllerDelegate?
 
     init(
         networkingWorker: CharacterNetworkWorking,
         presenter: CharacterExplorerPresenting,
-        controllerDelegate: CharactersExplorerControllerDelegate? = nil
+        controllerDelegate: CharactersExplorerControllerDelegate? = nil,
+        coreDataWorker: CharacterCoreDataWorking
     ) {
         self.networkingWorker = networkingWorker
         self.presenter = presenter
         self.controllerDelegate = controllerDelegate
+        self.coreDataWorker = coreDataWorker
         self.presenter.interactorDelegate = self
     }
 
@@ -44,6 +47,8 @@ final class CharactersExplorerInteractor: CharactersExplorerInteracting {
             if let self {
                 if case let .success(characters) = result {
                     self.makeCharacters(characters: characters, isFirst: page == 1 ? true : false)
+                } else {
+                    self.useCoredata()
                 }
             }
         }
@@ -83,9 +88,42 @@ private extension CharactersExplorerInteractor {
 
     private func makeCharacters(characters: Characters, isFirst: Bool) {
         if isFirst {
+            self.storeOnCoreData(characters)
+
             self.presenter.loadCharacters(with: characters)
         } else {
             self.presenter.updateCharacters(with: characters)
+        }
+    }
+
+    private func storeOnCoreData(_ characters: Characters) {
+        guard let isEmpty = self.coreDataIsEmpty() else { return }
+
+        if isEmpty {
+            characters.data.forEach { character in
+                self.coreDataWorker.post(with: character)
+            }
+        }
+    }
+
+    private func coreDataIsEmpty() -> Bool? {
+        guard let coreData = coreDataWorker.get() else { return nil }
+
+        return coreData.isEmpty
+    }
+
+    private func useCoredata() {
+        if let coreData = self.coreDataWorker.get() {
+            var charactersData: [Character] = []
+
+            coreData.forEach {
+                guard let character = $0 else { return }
+
+                charactersData.append(character)
+            }
+
+            let chashedCharacters = Characters(count: charactersData.count, data: charactersData)
+            self.makeCharacters(characters: chashedCharacters, isFirst: true)
         }
     }
 }

@@ -65,6 +65,7 @@ final class CharactersExplorerController: UIViewController, CharactersExplorerCo
             status: self.presenterDelegate?.filterQueries.status,
             species: self.presenterDelegate?.filterQueries.species
         )
+
     }
 
     func loadNextPage() {
@@ -95,10 +96,6 @@ extension CharactersExplorerController: CharactersExplorerControllerDelegate {
         }
     }
 
-    @objc func printer() {
-        print("search")
-    }
-
     @objc func showFilter() {
         router.navigateToFilter()
     }
@@ -122,8 +119,8 @@ private extension CharactersExplorerController {
     private func addBarItems() {
         let filterBarItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(showFilter))
 
-        let searchBarItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(printer))
+//        let searchBarItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(printer))
 
-        self.navigationItem.rightBarButtonItems = [filterBarItem, searchBarItem]
+        self.navigationItem.rightBarButtonItems = [filterBarItem]
     }
 }
