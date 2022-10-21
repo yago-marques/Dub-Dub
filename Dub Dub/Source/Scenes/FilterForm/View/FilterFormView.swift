@@ -95,7 +95,6 @@ private extension FilterFormView {
     }
 }
 
-
 extension FilterFormView: ViewCoding {
     func setupView() {
         self.backgroundColor = .systemBackground

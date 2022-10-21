@@ -127,4 +127,3 @@ private extension CharactersExplorerInteractor {
         }
     }
 }
-

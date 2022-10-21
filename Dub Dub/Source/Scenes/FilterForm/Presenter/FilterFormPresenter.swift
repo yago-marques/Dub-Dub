@@ -25,4 +25,3 @@ final class FilterFormPresenter: FilterFormPresenting {
     }
     
 }
-

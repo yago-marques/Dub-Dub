@@ -10,7 +10,7 @@ import UIKit
 final class PickerImageView: UIView {
 
     private let elements: [String]
-    private var markedElement: IndexPath? = nil
+    private var markedElement: IndexPath?
     private(set) var selectedItem: String?
 
     private lazy var itemsCollection: UICollectionView = {
@@ -28,9 +28,10 @@ final class PickerImageView: UIView {
         return myCollectionView
     }()
 
-    init(elements: [String], selectedItem: String? = nil) {
+    init(elements: [String], selectedItem: String? = nil, markedElement: IndexPath? = nil) {
         self.selectedItem = selectedItem
         self.elements = elements
+        self.markedElement = markedElement
         super.init(frame: .zero)
 
         buildLayout()
