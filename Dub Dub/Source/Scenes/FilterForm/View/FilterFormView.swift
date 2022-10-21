@@ -61,6 +61,7 @@ final class FilterFormView: UIView {
         button.backgroundColor = .tintColor
         button.layer.cornerCurve = .circular
         button.layer.cornerRadius = 10
+        button.tintColor = UIColor(named: "MyGreen")
 
         return button
     }()
