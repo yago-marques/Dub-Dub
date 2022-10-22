@@ -15,7 +15,6 @@ protocol CharactersExplorerInteracting {
 
 protocol CharactersExplorerInteractorDelegate: AnyObject {
     func updateCollection()
-    func modifyViewInractive(to state: Bool)
 }
 
 final class CharactersExplorerInteractor: CharactersExplorerInteracting {
@@ -70,10 +69,6 @@ final class CharactersExplorerInteractor: CharactersExplorerInteracting {
 extension CharactersExplorerInteractor: CharactersExplorerInteractorDelegate {
     func updateCollection() {
         controllerDelegate?.updateCollection()
-    }
-
-    func modifyViewInractive(to state: Bool) {
-        controllerDelegate?.viewIsInteractive(state)
     }
 }
 

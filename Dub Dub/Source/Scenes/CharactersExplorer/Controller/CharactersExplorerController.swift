@@ -9,7 +9,6 @@ import UIKit
 
 protocol CharactersExplorerControllerDelegate: AnyObject {
     func updateCollection()
-    func viewIsInteractive(_ state: Bool)
 }
 
 protocol CharactersExplorerControlling {
@@ -84,14 +83,6 @@ extension CharactersExplorerController: CharactersExplorerControllerDelegate {
         DispatchQueue.main.async { [weak self] in
             if let self {
                 self.characterView.charactersCollection.reloadData()
-            }
-        }
-    }
-
-    func viewIsInteractive(_ state: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            if let self {
-                self.characterView.isUserInteractionEnabled = state
             }
         }
     }

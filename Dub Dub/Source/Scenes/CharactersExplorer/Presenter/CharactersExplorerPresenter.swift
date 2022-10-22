@@ -43,7 +43,6 @@ final class CharacterExplorerPresenter: CharacterExplorerPresenting, CharacterEx
     }
 
     func updateCharacters(with characters: Characters) {
-        interactorDelegate?.modifyViewInractive(to: false)
         self.characters.next = characters.next
         self.characters.prev = characters.prev
 
@@ -58,7 +57,6 @@ final class CharacterExplorerPresenter: CharacterExplorerPresenting, CharacterEx
 
             }
         }
-        interactorDelegate?.modifyViewInractive(to: true)
     }
 
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 enum CharactersExplorerFactory {
-    static func make() -> CharactersExplorerController {
+    static func make() -> UIViewController {
         let view = CharactersExplorerView(frame: UIScreen.main.bounds)
         let networkingWorker = CharacterNetworkingWorker(api: URLSessionHTTPClient(session: URLSession.shared))
         let coreDataWorker = CharacterCoreDataWorker()
