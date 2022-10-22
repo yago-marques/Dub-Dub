@@ -6,16 +6,15 @@
 
 > An app to make it easy to find Rick and Morty characters
 
-https://user-images.githubusercontent.com/84297648/194336462-4d0a5153-b17f-4c3f-9d94-bccab5d75a4f.mp4
-
 ## 👩🏾‍💻 Technologies
 - [x] UIKit
 - [x] ViewCode, auto layout
 - [x] VIP Clean Architecture
-- [x] swiftlint
+- [x] Swiftlint
 - [x] API REST
 - [x] Core Data
 - [x] Dependency injection and inversion of control
+- [x] Unit tests with doubles (Mock, Stub, Spy)
 
 ## 📱 Architecture diagram
 
