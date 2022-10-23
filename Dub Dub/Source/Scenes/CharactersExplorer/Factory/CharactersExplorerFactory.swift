@@ -11,7 +11,7 @@ enum CharactersExplorerFactory {
     static func make() -> UIViewController {
         let view = CharactersExplorerView(frame: UIScreen.main.bounds)
         let networkingWorker = CharacterNetworkingWorker(api: URLSessionHTTPClient(session: URLSession.shared))
-        let coreDataWorker = CharacterCoreDataWorker()
+        let coreDataWorker = CharacterCoreDataWorker(coreData: CoreDataManager.shared)
         let presenter = CharacterExplorerPresenter()
         let interactor = CharactersExplorerInteractor(networkingWorker: networkingWorker, presenter: presenter, coreDataWorker: coreDataWorker)
         let router = CharactersExplorerRouter()

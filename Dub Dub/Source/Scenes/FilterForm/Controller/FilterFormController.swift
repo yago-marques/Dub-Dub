@@ -22,6 +22,7 @@ final class FilterFormController: UIViewController {
             mediator.modifyFilter(with: self.filter)
         }
     }
+
     private var filterView: FilterFormView
     private var interactor: FilterFormInteracting
     private var router: FilterFormRouting
@@ -31,7 +32,7 @@ final class FilterFormController: UIViewController {
         view: FilterFormView,
         interactor: FilterFormInteracting,
         router: FilterFormRouting,
-        navigation: UINavigationController,
+        navigation: UINavigationController?,
         mediator: ExplorerAndFilterMediation
     ) {
         self.filterView = view

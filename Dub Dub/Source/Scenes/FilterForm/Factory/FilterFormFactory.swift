@@ -7,8 +7,12 @@
 
 import UIKit
 
-enum FilterFormFactory {
-    static func make(navigation: UINavigationController, mediator: ExplorerAndFilterMediation) -> UIViewController {
+protocol FilterFormFactoring {
+    func make(navigation: UINavigationController, mediator: ExplorerAndFilterMediation) -> UIViewController
+}
+
+struct FilterFormFactory: FilterFormFactoring {
+    func make(navigation: UINavigationController, mediator: ExplorerAndFilterMediation) -> UIViewController {
         let view = FilterFormView(frame: UIScreen.main.bounds)
         let presenter = FilterFormPresenter()
         let interactor = FilterFormInteractor(presenter: presenter)

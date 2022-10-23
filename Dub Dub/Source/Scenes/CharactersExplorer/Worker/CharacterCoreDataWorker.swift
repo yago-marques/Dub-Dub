@@ -15,8 +15,14 @@ protocol CharacterCoreDataWorking {
 
 final class CharacterCoreDataWorker: CharacterCoreDataWorking {
 
+    let coreData: CoreDataManaging
+
+    init(coreData: CoreDataManaging) {
+        self.coreData = coreData
+    }
+
     func get() -> [Character?]? {
-        guard let charactersEntities = CoreDataManager.shared.fetchCharacters() else { return nil }
+        guard let charactersEntities = coreData.fetchCharacters() else { return nil }
 
         let characters = charactersEntities.map { entity -> Character? in
             self.makeCharacters(with: entity)
@@ -26,7 +32,7 @@ final class CharacterCoreDataWorker: CharacterCoreDataWorking {
     }
 
     func post(with character: Character) {
-        CoreDataManager.shared.createChracter(with: character)
+        coreData.createChracter(with: character)
     }
 
     private func makeCharacters(with entity: CharacterEntity) -> Character? {

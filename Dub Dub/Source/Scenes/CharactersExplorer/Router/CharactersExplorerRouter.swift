@@ -17,19 +17,22 @@ final class CharactersExplorerRouter: CharactersExplorerRouting {
 
     var navigationController: UINavigationController?
     var mediator: ExplorerAndFilterMediation?
+    var factory: FilterFormFactoring
 
     init(
         navigationController: UINavigationController? = nil,
-        mediator: ExplorerAndFilterMediation? = nil
+        mediator: ExplorerAndFilterMediation? = nil,
+        factory: FilterFormFactoring = FilterFormFactory()
     ) {
         self.mediator = mediator
         self.navigationController = navigationController
+        self.factory = factory
     }
 
     func navigateToFilter() {
         if let navigation = navigationController, let mediator = self.mediator {
             navigationController?.present(
-                FilterFormFactory.make(navigation: navigation, mediator: mediator),
+                factory.make(navigation: navigation, mediator: mediator),
                 animated: true
             )
         }

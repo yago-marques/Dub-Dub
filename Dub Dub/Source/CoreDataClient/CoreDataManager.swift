@@ -8,7 +8,12 @@
 import Foundation
 import CoreData
 
-struct CoreDataManager {
+protocol CoreDataManaging {
+    @discardableResult func createChracter(with character: Character) -> CharacterEntity?
+    func fetchCharacters() -> [CharacterEntity]?
+}
+
+struct CoreDataManager: CoreDataManaging {
 
     static let shared = CoreDataManager()
 
