@@ -6,6 +6,8 @@
 
 > An app to make it easy to find Rick and Morty characters
 
+https://user-images.githubusercontent.com/84297648/197422776-8515e5fd-4317-42b1-b619-bc05e78db0c3.mov
+
 ## 👩🏾‍💻 Technologies
 - [x] UIKit
 - [x] ViewCode, auto layout
@@ -19,6 +21,10 @@
 ## 📱 Architecture diagram
 
 <img width="714" alt="Screen Shot 2022-10-20 at 21 47 01" src="https://user-images.githubusercontent.com/84297648/197085829-789447b5-14de-4b9a-8761-083099549ec9.png">
+
+## 📱 Tests current coverage, 23/10/2022 -> 75%
+
+<img width="714" alt="Screen Shot 2022-10-23 at 19 58 39" src="https://user-images.githubusercontent.com/84297648/197422961-65b73eb5-4b11-49c4-906f-596532420997.png">
 
 ## 💻 Requirements to install code
 
