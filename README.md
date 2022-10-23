@@ -6,6 +6,8 @@
 
 > An app to make it easy to find Rick and Morty characters
 
+> Code advanced info it's available [here[pt-BR]](https://github.com/yago-marques/Dub-Dub/wiki)
+
 https://user-images.githubusercontent.com/84297648/197422776-8515e5fd-4317-42b1-b619-bc05e78db0c3.mov
 
 ## 👩🏾‍💻 Technologies
