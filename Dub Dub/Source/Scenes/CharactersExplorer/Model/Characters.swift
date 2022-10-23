@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Characters {
+struct Characters: Equatable {
     let count: Int
     var next: Int?
     var prev: Int?
     var data: [Character]
 }
 
-struct Character {
+struct Character: Equatable {
     let name: String
     let status: String
     let species: String

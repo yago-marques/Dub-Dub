@@ -27,7 +27,9 @@ final class InteractorCoreDataWorkerStub: CharacterCoreDataWorking {
         self.characters?.append(character)
         receivedMessages.append(.post)
     }
+}
 
+extension InteractorCoreDataWorkerStub {
     func populate() {
         characters = [
             Dub_Dub.Character(name: "", status: "", species: "", gender: "", image: Data(), imageUrl: "", location: "")

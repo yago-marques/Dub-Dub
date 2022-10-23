@@ -23,11 +23,7 @@ final class CharacterExplorerPresenter: CharacterExplorerPresenting, CharacterEx
 
     var characters = Characters(count: 0, next: nil, prev: nil, data: []) {
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                if let self {
-                    self.interactorDelegate?.updateCollection()
-                }
-            }
+            self.interactorDelegate?.updateCollection()
         }
     }
     var filterQueries = CharacterFilter(genres: nil, status: nil, species: nil)
@@ -48,13 +44,9 @@ final class CharacterExplorerPresenter: CharacterExplorerPresenting, CharacterEx
 
         characters.data.forEach { [weak self] character in
             if let self {
-                if !self.characters.data.contains(where: {
-                    $0.name == character.name &&
-                    $0.image == character.image
-                }) {
+                if self.characters.data.firstIndex(of: character) == nil {
                     self.characters.data.append(character)
                 }
-
             }
         }
     }

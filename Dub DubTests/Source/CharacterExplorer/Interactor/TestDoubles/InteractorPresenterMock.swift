@@ -42,7 +42,9 @@ final class InteractorPresenterMock: CharacterExplorerPresenting {
             interactorDelegate?.updateCollection()
         }
     }
+}
 
+extension InteractorPresenterMock {
     func turnNextPageNil() {
         self.characters.next = nil
     }
